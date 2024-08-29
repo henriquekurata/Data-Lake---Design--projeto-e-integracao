@@ -1,4 +1,4 @@
-# ***Construção de  Data Lakeem nuvem: S3 com AWS Lake Formation e Análise de dados com SQL acessando o Athena***
+# ***Construção de  Data Lake em nuvem: S3, AWS Lake Formation e Análise de dados com SQL acessando o Athena***
 
 ## Ferramentas:
 
