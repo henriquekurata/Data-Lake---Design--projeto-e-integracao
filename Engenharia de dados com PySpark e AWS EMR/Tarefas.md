@@ -15,7 +15,7 @@ AWS S3 e EMR.
 
 ## Comandos:
 
-### Dados:
+### Dados (dataset):
 name,inspection_result,inspection_closed_business,violation_type,violation_points
 100 LB CLAM,Incomplete,FALSE,,0
 100 LB CLAM,Unsatisfactory,FALSE,BLUE,5
