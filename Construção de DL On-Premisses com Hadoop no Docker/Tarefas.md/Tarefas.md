@@ -6,8 +6,7 @@ Docker e Hadoop.
 
 ## Passos:
 * Download do Hadoop e JDK;
-* Exceutar o arquivo de imagem dockerfile;
-* Criar container;
+* Criar o container com o dockerfile;
 * Fazer ajustes no container;
 * Inicializar o namenode e os datanodes.
 
@@ -108,10 +107,13 @@ EXPOSE 50070 50075 50010 50020 50090 8020 9000 9864 9870 8030 8031 8032 8033 804
 https://docs.docker.com/engine/reference/commandline/build/
 
 3- Precisaremos de uma rede. Verifique as redes disponíveis e então crie uma com as instruções abaixo:
+
 docker network ls
+
 docker network create -d bridge dsa_dl_net
 
 4- Crie e inicialize o container com a instrução abaixo:
+
 docker run -it -d --net dsa_dl_net --hostname hdpmaster -p 9870:9870 -p 50030:50030 -p 8020:8020 --name namenode namenode:dsa 
 
 #Documentação do docker run:
@@ -120,19 +122,25 @@ https://docs.docker.com/engine/reference/commandline/run/
 5- Acesse o container usando a CLI no Docker Desktop e execute as instruções abaixo:
 
 #Restart do serviço ssh
+
 sudo service ssh restart
 
 #Ajuste dos privilégios
+
 sudo chown -R hduser:hduser /home/hduser/jdk
+
 sudo chown -R hduser:hduser /home/hduser/hadoop
 
 #Formate o NameNode (somente na primeira execução)
+
 hdfs namenode -format
 
 #Start do serviço do NameNode
+
 hdfs --daemon start namenode
 
 #Se precisar parar o serviço:
+
 hdfs --daemon stop namenode
 
 #Acesse: http://localhost:9870/
@@ -235,30 +243,39 @@ https://docs.docker.com/engine/reference/commandline/run/
 5- Acesse cada container usando a CLI no Docker Desktop e execute as instruções abaixo:
 
 #Restart do serviço ssh
+
 sudo service ssh restart
 
 #Ajuste dos privilégios
+
 sudo chown -R hduser:hduser /home/hduser/jdk
+
 sudo chown -R hduser:hduser /home/hduser/hadoop
 
 #Crie a pasta ~/.ssh
+
 mkdir ~/.ssh
 
 #Crie o arquivo ~/.ssh/authorized_keys
+
 touch ~/.ssh/authorized_keys
 
 #Ajuste o privilégio
+
 chmod 600 ~/.ssh/authorized_keys
 
 #Copie a chave que está em /home/hduser/.ssh/authorized_keys no NameNode para o mesmo arquivo em cada datanode.
 
 #Start do serviço do DataNode
+
 hdfs --daemon start datanode
 
 #Se precisar parar o serviço:
+
 hdfs --daemon stop datanode
 
 #Acesse o painel de gestão pelo navegador
+
 Obs: Se não funcionar o endereço 0.0.0.0 use localhost
 
 Obs: Para inicializar o datanode é necessário limpar a pasta /home/hduser/hdfs/datanode/ (sudo rm -rf *)
