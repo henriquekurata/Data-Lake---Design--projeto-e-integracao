@@ -5,11 +5,11 @@
 AWS S3 e EMR.
 
 ## Passos:
-* Criar bucket S3 com pasta para "dados" e "jobs"
+* Criar bucket S3 com pasta para "dados" e "jobs";
 * Carregar os dados e o script Pyspark nas pastas organizadas;
 * Criar Cluster no menu do EMR (Aplicativos - Spark , configuração cluster, VPC - usar o automático, encerramento do cluster, Logs de cluster - Adicionar o bucket criado para gravação no item anterior, Configuração de segurança e par de chaves do EC2 - Criar par de chaves tipo RSA e .ppk para Windows para liberar o acesso via máquina local, Perfis do Identity and Access Management (IAM) para conversação entre serviços AWS- Criar automaticamente, Perfil de instância do EC2 para o Amazon EMR para liberar o acesso de leitura e escrita da instancia ao bucket S3- Criar automaticamente);
 * Ajustar no menu do cluster EMR "EC2 security groups (firewall)": Primary node > inbound role > add rule > SSH > 0.0.0.0./0 > para o terminal da máquina local conseguir acessar o cluster na nuvem AWS;
-* Acessar o cluster EMR via linha de comando: Para Windows basta fazer a conexão com o putty.exe
+* Acessar o cluster EMR via linha de comando: Para Windows basta fazer a conexão com o putty.exe;
 * Com a conexão relizada, basta acessar a aba "steps" do cluster criado e adicionar um Spark application > Cluster mode > Application location (job.py) bucket S3 > Argumentos (adicionar a URI: --data_source s3://p3-dsa-dl-hk/dados/dataset.csv e --output_uri s3://p3-dsa-dl-hk/saida) em linhas separadas, pois no script Spark há argumentos na função def); 
 * Processamento de dados com PySpark será realizado após configurações do "steps".
 
