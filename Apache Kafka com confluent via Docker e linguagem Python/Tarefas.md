@@ -7,7 +7,10 @@ Docker, kafka e Python.
 ## Passos:
 * Criar container zookeeper e brocker;
 * Criar tópico e streams para producer e consumer;
-* Acessar terminal externo do container broker e verificar a integração da camada de mensagens.
+* Acessar terminal externo do container broker e verificar a integração da camada de mensagens;
+* Criar container cliente;
+* Criar arquivos para producer e consumer;
+* Acessar terminal externo do container cliente e verificar a integração da camada de mensagens (Python procuder.py / python consumer.py).
 
 ## Comandos:
 
@@ -74,11 +77,6 @@ cd /usr/bin
 
 ./kafka-console-consumer --bootstrap-server kafka-2:9092 --topic lab6 --from-beginning
 
-
-- Passos:
-1-Criar container cliente;
-2-Criar arquivos para producer e consumer;
-3-Acessar terminal externo do container cliente e verificar a integração da camada de mensagens (Python procuder.py / python consumer.py)
 
 
 ### Produzindo e Consumindo Stream de Dados do Cluster Kafka com Linguagem Python
