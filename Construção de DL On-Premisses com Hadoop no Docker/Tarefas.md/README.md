@@ -242,41 +242,39 @@ https://docs.docker.com/engine/reference/commandline/run/
 
 5. **Acesse cada container usando a CLI no Docker Desktop e execute as instruções abaixo:**
 
-----
-
-##### Restart do serviço ssh
+#### Restart do serviço ssh
 
 sudo service ssh restart
 
-##### Ajuste dos privilégios
+#### Ajuste dos privilégios
 
 sudo chown -R hduser:hduser /home/hduser/jdk
 
 sudo chown -R hduser:hduser /home/hduser/hadoop
 
-##### Crie a pasta ~/.ssh
+#### Crie a pasta ~/.ssh
 
 mkdir ~/.ssh
 
-##### Crie o arquivo ~/.ssh/authorized_keys
+#### Crie o arquivo ~/.ssh/authorized_keys
 
 touch ~/.ssh/authorized_keys
 
-##### Ajuste o privilégio
+#### Ajuste o privilégio
 
 chmod 600 ~/.ssh/authorized_keys
 
-##### Copie a chave que está em /home/hduser/.ssh/authorized_keys no NameNode para o mesmo arquivo em cada datanode.
+#### Copie a chave que está em /home/hduser/.ssh/authorized_keys no NameNode para o mesmo arquivo em cada datanode.
 
 ####Start do serviço do DataNode
 
 hdfs --daemon start datanode
 
-##### Se precisar parar o serviço:
+#### Se precisar parar o serviço:
 
 hdfs --daemon stop datanode
 
-##### Acesse o painel de gestão pelo navegador
+#### Acesse o painel de gestão pelo navegador
 
 Obs: Se não funcionar o endereço 0.0.0.0 use localhost
 
