@@ -3,6 +3,29 @@
 ## **Descrição do Projeto:**
 Este projeto visa processar dados utilizando Amazon EMR (Elastic MapReduce) para executar um job PySpark. O objetivo é configurar um cluster EMR, carregar e processar dados armazenados no S3 e realizar análise com PySpark. O resultado é salvo de volta no S3 para posterior análise ou uso.
 
+## **Funcionalidades Principais:**
+
+- **Criação e Configuração do Ambiente:**
+  - Criação de buckets no Amazon S3 para armazenar dados e scripts.
+  - Configuração de um cluster EMR com Apache Spark para processamento de dados.
+
+- **Carregamento e Processamento de Dados:**
+  - Upload de dados e scripts PySpark para o bucket S3.
+  - Execução de um job PySpark no cluster EMR para processar os dados.
+  - O job PySpark lê os dados, realiza consultas e grava resultados processados de volta no S3.
+
+- **Análise de Dados:**
+  - O script PySpark realiza a análise de dados para identificar os restaurantes com o maior número de "red violations" (infrações graves).
+  - Geração de um DataFrame com os 10 principais restaurantes com mais infrações vermelhas.
+
+- **Acesso e Execução:**
+  - Conexão ao cluster EMR via SSH.
+  - Configuração e execução de steps no cluster para processamento de dados usando o script PySpark.
+  - Armazenamento dos resultados processados no S3 para fácil acesso e análise posterior.
+
+### **Resultado:**
+Os dados processados são salvos em um bucket S3, permitindo fácil acesso e análise dos resultados obtidos pela execução do job PySpark.
+
 
 ## 🛠️ **Ferramentas Utilizadas**
 - **AWS S3:** Serviço de armazenamento de objetos para armazenar dados e scripts.
