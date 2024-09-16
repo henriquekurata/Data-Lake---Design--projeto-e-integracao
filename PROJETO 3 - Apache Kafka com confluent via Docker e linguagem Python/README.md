@@ -176,7 +176,7 @@ producer.flush()
 
 ```
 
-# Consumer
+#Consumer
 ```
 # Consumer
 from confluent_kafka import Consumer, KafkaError
