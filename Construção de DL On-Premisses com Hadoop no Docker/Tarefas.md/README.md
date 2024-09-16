@@ -1,8 +1,10 @@
 # ***Configuração de ambiente Hadoop com Docker***
 
-## Ferramentas: 
 
-Docker e Hadoop.
+
+## Ferramentas
+**Docker**: Plataforma para criar, implantar e gerenciar containers, facilitando a configuração e o isolamento de ambientes.
+**Hadoop**: Framework para processamento e armazenamento de grandes volumes de dados, com suporte para armazenamento distribuído e processamento paralelo.
 
 ## Passos:
 * Download do Hadoop e JDK;
