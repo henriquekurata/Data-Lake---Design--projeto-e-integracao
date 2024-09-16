@@ -105,20 +105,20 @@ EXPOSE 50070 50075 50010 50020 50090 8020 9000 9864 9870 8030 8031 8032 8033 804
 #### Documentação do `docker build`:
 https://docs.docker.com/engine/reference/commandline/build/
 
-3- **Precisaremos de uma rede. Verifique as redes disponíveis e então crie uma com as instruções abaixo:**
+3. **Precisaremos de uma rede. Verifique as redes disponíveis e então crie uma com as instruções abaixo:**
 
 docker network ls
 
 docker network create -d bridge dsa_dl_net
 
-4- **Crie e inicialize o container com a instrução abaixo:**
+4. **Crie e inicialize o container com a instrução abaixo:**
 
 docker run -it -d --net dsa_dl_net --hostname hdpmaster -p 9870:9870 -p 50030:50030 -p 8020:8020 --name namenode namenode:dsa 
 
 #Documentação do docker run:
 https://docs.docker.com/engine/reference/commandline/run/
 
-5- **Acesse o container usando a CLI no Docker Desktop e execute os seguintes comandos:**
+5. **Acesse o container usando a CLI no Docker Desktop e execute os seguintes comandos:**
 
 #Restart do serviço ssh
 
@@ -149,9 +149,9 @@ hdfs --daemon stop namenode
 
 ### Preparação dos DataNodes
 
-#### 1- Faça o download do Apache Hadoop e do JDK 8, coloque na pasta "binarios", descompacte os arquivos e renomeie as pastas. O procedimento é o mesmo do namenode.
+1. **Faça o download do Apache Hadoop e do JDK 8, coloque na pasta "binarios", descompacte os arquivos e renomeie as pastas. O procedimento é o mesmo do namenode.**
 
-#### 2- Abra o terminal ou prompt de comando, navegue até a pasta do DataNode e execute a instrução abaixo para criar a imagem:
+2. **Abra o terminal ou prompt de comando, navegue até a pasta do DataNode e execute a instrução abaixo para criar a imagem:**
 docker build . -t datanode:dsa
 
 #Arquivo de Configuração do DataNode no Cluster HDFS
@@ -228,10 +228,10 @@ EXPOSE 22
 #Documentação do `docker build`:
 https://docs.docker.com/engine/reference/commandline/build/
 
-#### 3- Precisaremos de uma rede. Verifique se a rede `dsa_dl_net` criada no capítulo anterior está criada:
+3. **Precisaremos de uma rede. Verifique se a rede `dsa_dl_net` criada no capítulo anterior está criada:**
 docker network ls
 
-#### 4- Crie e inicialize o container de cada datanode (criaremos 2) com cada instrução abaixo:
+4. **Crie e inicialize o container de cada datanode (criaremos 2) com cada instrução abaixo:**
 docker run -it -d --net dsa_dl_net --hostname datanode1 --name datanode1 datanode:dsa
 
 docker run -it -d --net dsa_dl_net --hostname datanode2 --name datanode2 datanode:dsa
@@ -239,7 +239,7 @@ docker run -it -d --net dsa_dl_net --hostname datanode2 --name datanode2 datanod
 #Documentação do docker run:
 https://docs.docker.com/engine/reference/commandline/run/
 
-#### 5- Acesse cada container usando a CLI no Docker Desktop e execute as instruções abaixo:
+5. **Acesse cada container usando a CLI no Docker Desktop e execute as instruções abaixo:**
 
 ##### Restart do serviço ssh
 
