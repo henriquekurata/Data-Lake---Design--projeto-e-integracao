@@ -10,6 +10,7 @@ Este projeto visa a configuração de um ambiente Hadoop utilizando Docker para 
 
 ## 🛠️ **Ferramentas Utilizadas**
 **Docker**: Plataforma para criar, implantar e gerenciar containers, facilitando a configuração e o isolamento de ambientes.
+
 **Hadoop**: Framework para processamento e armazenamento de grandes volumes de dados, com suporte para armazenamento distribuído e processamento paralelo.
 
 ## 📋 **Descrição do Processo**

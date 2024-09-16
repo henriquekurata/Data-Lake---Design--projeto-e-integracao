@@ -1,21 +1,59 @@
-# ***Camada de mensagens Kafka - Criando um ambiente com KSQLDB para execuração de querys SQL***
+# 🚀 ***Camada de Mensagens Kafka - Criando um Ambiente com KSQLDB para Execução de Queries SQL***
 
-## Ferramentas: 
+## **Descrição do Projeto:**
+Este projeto configura um ambiente Kafka utilizando Docker e KSQLDB para executar consultas SQL em dados de streaming. O objetivo é criar um cluster Kafka, configurar tópicos e conectores, e usar o KSQLDB para consultar e transformar dados em tempo real.
 
-Kafta (Confluent)
+O projeto configura um ambiente Kafka com KSQLDB para processar e consultar dados em tempo real. Utilizando Docker, você pode iniciar um cluster Kafka, criar tópicos, e executar consultas SQL sobre streams e tabelas com o KSQLDB, permitindo o processamento e análise de dados dinâmicos e em tempo real.
+
+## 🛠️ **Ferramentas Utilizadas**
+**Kafka (Confluent)**: Plataforma de mensagens distribuídas para processamento de dados em tempo real.
+**KSQLDB**: Banco de dados SQL para processamento de fluxo de dados em tempo real, baseado em Kafka.
+
+## Funcionalidades da Camada de Mensagens Kafka com KSQLDB
+### **Criação e Configuração de Serviços**
+- **Kafka Broker:** Gerencia comunicação e armazenamento de dados.
+- **Zookeeper:** Coordena e gerencia o cluster Kafka.
+- **Schema Registry:** Armazena e valida esquemas de dados.
+- **Connect:** Gerencia integração de dados com Kafka.
+- **Control Center:** Interface web para monitoramento e gerenciamento.
+- **KSQLDB Server:** Executa consultas SQL sobre dados em Kafka.
+- **KSQLDB CLI:** Interface de linha de comando para interações.
+- **Rest Proxy:** Interage com Kafka via HTTP.
+
+### **Manipulação de Dados com KSQLDB**
+- **Criação de Streams:** Representa tópicos de Kafka para consultas contínuas.
+- **Criação de Tabelas:** Armazena dados com atualizações e agregações.
+- **Consultas e Transformações:** Visualiza, filtra e transforma dados.
+- **Joins e Agregações:** Combina e agrega dados, com suporte a janelas temporais.
+
+### **Exemplos de Consultas**
+- **Seleção de Dados:** Visualização de dados em streams e tabelas.
+- **Filtros e Joins:** Combinação e refinamento de dados.
+- **Aggregações:** Contagem de eventos e outras funções de agregação.
 
 
-## Passos:
-* Acessar a pasta e executar o docker-compose extraído do git direto no terminal da máquina local (Docker-compose up -d);
-* Com os containers criados, basta acessar localhost:9021 (Control Center)
-* Criar Topics, connector e acessar o Ksqldb.
+## 📋 **Descrição do Processo**
+* 1. **Configuração do Ambiente com Docker:**
+   - Acesse a pasta do projeto e execute o docker-compose extraído do git direto no terminal da máquina local para criar e iniciar os containers:
+     ```bash
+     docker-compose up -d
+     ```
 
-## Comandos:
+2. **Acesso ao Control Center:**
+   - Com os containers em execução, acesse o Control Center através do navegador em `http://localhost:9021`.
 
-docker-compose para criação de imagens e container docker do Kafka:
+3. **Criação de Topics e Conectores:**
+   - Utilize o Control Center para criar tópicos e conectores conforme necessário.
+   - Acesse o KSQLDB para executar queries SQL sobre os dados.
+
+
+
+## 🖥️ **Comandos:**
+
+### Docker Compose para Criação de Imagens e Containers Kafka
 
 ```
----
+---yaml
 version: '2'
 services:
   zookeeper:
@@ -203,18 +241,23 @@ Criar os topics e os connects (datagen connects > name > kafka.topic (tópico) /
 ### Agora é acessar o menu KsqlDB para execução de querys SQL:
 
 ```
+#Crie um stream para um tópico específico no KSQLDB
 #Criar um stream (objeto imutável) para um dos tópicos
 CREATE STREAM pageviews_stream WITH (KAFKA_TOPIC='pageviews', VALUE_FORMAT='AVRO');
 
-#Select nos dados de stream
+#Execute uma consulta para visualizar os dados do stream:
+#Consulta ao Stream:
 SELECT * FROM pageviews_stream EMIT CHANGES;
 
 #Cria uma tabela (objeto mutável) para um dos tópicos
+#Crie uma tabela para um tópico específico no KSQLDB:
 CREATE TABLE users_table (id VARCHAR PRIMARY KEY) WITH (KAFKA_TOPIC='users', VALUE_FORMAT='AVRO');
 
+#Execute uma consulta para visualizar os dados da tabela
 #Select da tabela
 SELECT * FROM USERS_TABLE EMIT CHANGES;
 
+#Realize um join entre o stream e a tabela para criar um novo stream com dados combinados:
 #Join do stream com a tabela
 CREATE STREAM user_pageviews
   AS SELECT users_table.id AS userid, pageid, regionid, gender
@@ -222,9 +265,11 @@ CREATE STREAM user_pageviews
     LEFT JOIN users_table ON pageviews_stream.userid = users_table.id
 EMIT CHANGES;
 
+#Execute uma consulta para visualizar os dados do novo stream:
 #Select
 SELECT * FROM user_pageviews EMIT CHANGES;
 
+#Crie um novo stream filtrando dados baseados em condições específicas
 #Filtrando o stream
 CREATE STREAM pageviews_region_like_89
   WITH (KAFKA_TOPIC='pageviews_filtered_r8_r9', VALUE_FORMAT='AVRO')
@@ -232,9 +277,11 @@ CREATE STREAM pageviews_region_like_89
     WHERE regionid LIKE '%_8' OR regionid LIKE '%_9'
 EMIT CHANGES;
 
+#Execute uma consulta para visualizar os dados do stream filtrado:
 #Select
 SELECT * FROM pageviews_region_like_89 EMIT CHANGES;
 
+#Crie uma tabela para agregar dados com base em uma janela de tempo:
 #Window
 CREATE TABLE pageviews_per_region_89 WITH (KEY_FORMAT='JSON')
   AS SELECT userid, gender, regionid, COUNT(*) AS numusers
@@ -244,6 +291,8 @@ CREATE TABLE pageviews_per_region_89 WITH (KEY_FORMAT='JSON')
     HAVING COUNT(*) > 1
 EMIT CHANGES;
 
+
+#Execute uma consulta para visualizar os dados agregados
 #Select
 SELECT * FROM pageviews_per_region_89 EMIT CHANGES;
 
