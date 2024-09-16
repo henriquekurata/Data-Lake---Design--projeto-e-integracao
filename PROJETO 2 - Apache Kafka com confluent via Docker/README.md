@@ -7,6 +7,7 @@ O projeto configura um ambiente Kafka com KSQLDB para processar e consultar dado
 
 ## 🛠️ **Ferramentas Utilizadas**
 **Kafka (Confluent)**: Plataforma de mensagens distribuídas para processamento de dados em tempo real.
+
 **KSQLDB**: Banco de dados SQL para processamento de fluxo de dados em tempo real, baseado em Kafka.
 
 ## Funcionalidades da Camada de Mensagens Kafka com KSQLDB
@@ -33,7 +34,7 @@ O projeto configura um ambiente Kafka com KSQLDB para processar e consultar dado
 
 
 ## 📋 **Descrição do Processo**
-* 1. **Configuração do Ambiente com Docker:**
+1. **Configuração do Ambiente com Docker:**
    - Acesse a pasta do projeto e execute o docker-compose extraído do git direto no terminal da máquina local para criar e iniciar os containers:
      ```bash
      docker-compose up -d
@@ -232,11 +233,13 @@ services:
       KAFKA_REST_SCHEMA_REGISTRY_URL: 'http://schema-registry:8081'
 
 ```
+---
 
 ### Dentro do Kafka: localhost:9021
 
 Criar os topics e os connects (datagen connects > name > kafka.topic (tópico) / quickstart (igual ao name))
 
+---
 
 ### Agora é acessar o menu KsqlDB para execução de querys SQL:
 
@@ -297,3 +300,11 @@ EMIT CHANGES;
 SELECT * FROM pageviews_per_region_89 EMIT CHANGES;
 
 ```
+
+---
+## Contato
+
+Se tiver dúvidas ou sugestões sobre o projeto, entre em contato comigo:
+
+- 💼 [LinkedIn](https://www.linkedin.com/in/henrique-k-32967a2b5/)
+- 🐱 [GitHub](https://github.com/henriquekurata?tab=overview&from=2024-09-01&to=2024-09-01)
