@@ -25,7 +25,7 @@ Docker e Hadoop.
      docker build . -t namenode:dsa
      
 
-1. **Dockerfile para o NameNode**:
+2. **Dockerfile para o NameNode**:
 
 ```
 #https://hub.docker.com/_/ubuntu
@@ -105,20 +105,20 @@ EXPOSE 50070 50075 50010 50020 50090 8020 9000 9864 9870 8030 8031 8032 8033 804
 #### Documentação do `docker build`:
 https://docs.docker.com/engine/reference/commandline/build/
 
-3- Precisaremos de uma rede. Verifique as redes disponíveis e então crie uma com as instruções abaixo:
+3- **Precisaremos de uma rede. Verifique as redes disponíveis e então crie uma com as instruções abaixo:**
 
 docker network ls
 
 docker network create -d bridge dsa_dl_net
 
-4- Crie e inicialize o container com a instrução abaixo:
+4- **Crie e inicialize o container com a instrução abaixo:**
 
 docker run -it -d --net dsa_dl_net --hostname hdpmaster -p 9870:9870 -p 50030:50030 -p 8020:8020 --name namenode namenode:dsa 
 
 #Documentação do docker run:
 https://docs.docker.com/engine/reference/commandline/run/
 
-5- Acesse o container usando a CLI no Docker Desktop e execute os seguintes comandos:
+5- **Acesse o container usando a CLI no Docker Desktop e execute os seguintes comandos:**
 
 #Restart do serviço ssh
 
