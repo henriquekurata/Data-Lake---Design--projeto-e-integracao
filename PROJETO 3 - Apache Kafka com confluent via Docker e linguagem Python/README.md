@@ -1,22 +1,29 @@
-# ***Multi-Broker Kafka Cluster com Docker: producer e consumer com linguagem Python***
+# 🚀 ***Multi-Broker Kafka Cluster com Docker: Producer e Consumer com Linguagem Python***
 
-## Ferramentas:
+## **Descrição do Projeto:**
+Este projeto configura um cluster Kafka multi-broker utilizando Docker e integra produtores e consumidores de dados escritos em Python. O objetivo é criar um cluster Kafka com múltiplos brokers, configurar tópicos e streams, e utilizar scripts em Python para produzir e consumir dados.
 
-Docker, kafka e Python.
 
-## Passos:
+## 🛠️ **Ferramentas Utilizadas**
+- **Docker:** Plataforma para criar e gerenciar containers.
+- **Kafka:** Sistema de mensagens distribuídas.
+- **Python:** Linguagem de programação para criar os scripts de producer e consumer.
+
+## 📋 **Descrição do Processo**
 * Criar container zookeeper e brocker;
 * Criar tópico e streams para producer e consumer;
 * Acessar terminal externo do container broker e verificar a integração da camada de mensagens;
 * Criar container cliente;
 * Criar arquivos para producer e consumer;
-* Acessar terminal externo do container cliente e verificar a integração da camada de mensagens (Python procuder.py / python consumer.py).
+* Acessar o terminal externo do container cliente e verificar a integração da camada de mensagens (executar `python producer.py` e `python consumer.py`).
 
-## Comandos:
+
+
+## 📋 **Comandos:**
 
 ### Criando container zookeeper
 
-1- Abra o prompt de comando ou terminal e execute o comando abaixo para criar o container do Zookeeper, o gerenciador do cluster Kafka.
+1. Abra o prompt de comando ou terminal e execute o comando abaixo para criar o container do Zookeeper, o gerenciador do cluster Kafka.
 
 docker run -d --name zookeeper2 --network dsa_dl_net -e ZOOKEEPER_CLIENT_PORT=2181 confluentinc/cp-zookeeper:latest
 
