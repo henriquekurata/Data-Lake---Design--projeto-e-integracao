@@ -47,8 +47,7 @@ Este projeto configura um cluster Kafka multi-broker utilizando Docker e integra
 * Acessar o terminal externo do container cliente e verificar a integração da camada de mensagens (executar `python producer.py` e `python consumer.py`).
 
 
-
-## 📋 **Comandos:**
+## 🖥️ **Comandos:**
 
 ### Criando container zookeeper
 
