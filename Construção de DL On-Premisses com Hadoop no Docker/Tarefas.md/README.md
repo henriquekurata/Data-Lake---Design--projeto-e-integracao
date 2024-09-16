@@ -146,6 +146,7 @@ hdfs --daemon stop namenode
 
 #### Obs: Para mais informações sobre os arquivos de configurações do hadoop, basta acessar o site http://apache.github.io/hadoop/ na aba configuration
 
+----
 
 ### Preparação dos DataNodes
 
@@ -240,6 +241,8 @@ docker run -it -d --net dsa_dl_net --hostname datanode2 --name datanode2 datanod
 https://docs.docker.com/engine/reference/commandline/run/
 
 5. **Acesse cada container usando a CLI no Docker Desktop e execute as instruções abaixo:**
+
+----
 
 ##### Restart do serviço ssh
 
