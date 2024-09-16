@@ -1,16 +1,31 @@
-# ***Configuração de ambiente Hadoop com Docker***
+# 🚀 ***Configuração de ambiente Hadoop com Docker***
 
+## **Descrição do Projeto:**
+Este projeto visa a configuração de um ambiente Hadoop utilizando Docker para facilitar a implementação e o gerenciamento de clusters Hadoop em um ambiente controlado e isolado. O Hadoop é um framework de código aberto que permite o processamento e armazenamento de grandes volumes de dados de maneira distribuída. Utilizando Docker, é possível criar containers que emulam a funcionalidade de nós no cluster Hadoop, simplificando a configuração e a gestão dos serviços Hadoop, como o NameNode e DataNodes.
 
+## **Objetivos:**
+- **Configurar um ambiente Hadoop**: Instalar e configurar o Hadoop e JDK dentro de containers Docker.
+- **Gerenciar o cluster Hadoop**: Configurar o NameNode e DataNodes para processar e armazenar dados de forma distribuída.
+- **Automatizar a configuração**: Utilizar Docker para criar, ajustar e gerenciar containers de forma eficiente.
 
-## Ferramentas
+## 🛠️ **Ferramentas Utilizadas**
 **Docker**: Plataforma para criar, implantar e gerenciar containers, facilitando a configuração e o isolamento de ambientes.
 **Hadoop**: Framework para processamento e armazenamento de grandes volumes de dados, com suporte para armazenamento distribuído e processamento paralelo.
 
-## Passos:
-* Download do Hadoop e JDK;
-* Criar o container com o dockerfile;
-* Fazer ajustes no container;
-* Inicializar o namenode e os datanodes.
+## 📋 **Descrição do Processo**
+
+1. **Download e Preparação**:
+   - Baixe o Apache Hadoop e o JDK 8.
+   - Organize os arquivos em pastas adequadas e descompacte-os.
+2. **Criação dos Containers**:
+   - Configure o Dockerfile para o NameNode e DataNodes.
+   - Construa e execute os containers com as configurações apropriadas.
+3. **Configuração e Inicialização**:
+   - Configure a rede Docker necessária para os containers.
+   - Inicialize e configure o NameNode e DataNodes, ajustando permissões e configurando as chaves SSH.
+4. **Verificação e Acesso**:
+   - Acesse o painel de gestão do Hadoop via navegador para monitorar o estado do cluster.
+
 
 ## 🖥️ Comandos:
 
@@ -282,3 +297,11 @@ Obs: Se não funcionar o endereço 0.0.0.0 use localhost
 
 Obs: Para inicializar o datanode é necessário limpar a pasta /home/hduser/hdfs/datanode/ (sudo rm -rf *)
 
+
+---
+## Contato
+
+Se tiver dúvidas ou sugestões sobre o projeto, entre em contato comigo:
+
+- 💼 [LinkedIn](https://www.linkedin.com/in/henrique-k-32967a2b5/)
+- 🐱 [GitHub](https://github.com/henriquekurata?tab=overview&from=2024-09-01&to=2024-09-01)
